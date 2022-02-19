@@ -1,0 +1,4 @@
+{
+  "token": "<bot_token_here>",
+  "guild_ids": [12345, 67890]
+}
