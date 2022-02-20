@@ -16,15 +16,6 @@ async def on_ready():
     print('\n'.join([f'  - {g.name} ({g.id})' for g in client.guilds]))
 
 
-@client.event
-async def on_message(message: nextcord.Message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
-
-
 _SIMP_UNICODE = ['🇸', '🇮', '🇲', '🇵']
 
 
