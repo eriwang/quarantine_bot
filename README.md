@@ -1,7 +1,7 @@
 # Quarantine Bot
 
 A repo for pretty specific functionality I'm adding to a personal discord server. Built using the
-(nextcord)[https://github.com/nextcord/nextcord] library.
+[nextcord](https://github.com/nextcord/nextcord) library.
 
 ## Set up for Development
 
