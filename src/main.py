@@ -1,11 +1,23 @@
 import json
+import os
 from typing import Union
 
 import nextcord
 
-config = json.load(open('config.json'))
-guild_ids = config['guild_ids'] if 'guild_ids' in config else None
 
+def _initialize_config():
+    if os.path.isfile('config.json'):
+        with open('config.json', encoding='UTF-8') as config_file:
+            loaded_config = json.load(config_file)
+    else:
+        loaded_config = {
+            'token': os.environ['BOT_TOKEN'],
+            'guild_ids': [int(gid) for gid in os.environ['GUILD_IDS'].split(',')],
+        }
+    return loaded_config
+
+
+config = _initialize_config()
 client = nextcord.Client()
 
 
@@ -45,13 +57,13 @@ async def on_message(msg: nextcord.Message):
         await msg.delete()
 
 
-@client.message_command(name='Simp', guild_ids=guild_ids)
+@client.message_command(name='Simp', guild_ids=config['guild_ids'])
 async def react_with_simp(interaction: nextcord.Interaction, msg: nextcord.Message):
     await _react_with_simp(msg)
     await interaction.response.send_message(f'Called {msg.author.name} a simp', ephemeral=True)
 
 
-@client.message_command(name='Unsimp', guild_ids=guild_ids)
+@client.message_command(name='Unsimp', guild_ids=config['guild_ids'])
 async def unreact_simp(interaction: nextcord.Interaction, msg: nextcord.Message):
     await _unsimp(msg)
     await interaction.response.send_message(f'Hm, I guess {msg.author.name} isn\'t a simp', ephemeral=True)

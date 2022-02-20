@@ -1,0 +1,11 @@
+[BASIC]
+variable-rgx=[a-z_][a-z0-9_]*$
+
+[FORMAT]
+max-line-length=120
+
+[MESSAGES CONTROL]
+disable=
+    C0114, # missing-module-docstring
+    C0115, # missing-class-docstring
+    C0116, # missing-function-docstring

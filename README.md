@@ -13,11 +13,12 @@ This project uses `pipenv` to manage dependencies (I used 2022.1.8). Once `pipen
     - Change the token to your discord bot's token
     - Change the guild ID list to the list of guild IDs (servers) you want to add the bot to (otherwise it'll add to
       all servers it's registered to)
-- `pipenv run python src/main.py` will run the bot
+    - Alternatively, set the env vars used in `main.py` accordingly (this is what the heroku deploy uses)
+- `pipenv run start` will run the bot.
+- The bot will print out a URL that will let you add it to a server you have permissions for.
 
-## Deploying
+See `Pipfile` for useful scripts (e.g. `pipenv run lint`).
 
-Start up the bot using the command from above. The bot will need to be constantly running.
+## Deployment
 
-The bot will print out a URL that should have the correct permissions. Click on that URL to add the bot to a server
-that you have permissions for.
+This is CD'd on Heroku using the `main` branch.

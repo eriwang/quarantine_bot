@@ -1,0 +1,1 @@
+worker: pipenv install && pipenv run start
