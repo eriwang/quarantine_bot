@@ -1,0 +1,22 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: Install pipenv
+      run: python -m pip isntall --upgrade pipenv wheel
+    - name: Install deps
+      run: pipenv install
+    - name: Lint
+      run: pipenv run lint
