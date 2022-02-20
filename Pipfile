@@ -5,8 +5,13 @@ name = "pypi"
 
 [packages]
 nextcord = "*"
+pylint = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.8"
+
+[scripts]
+lint = "pylint src/"
+start = "python src/main.py"

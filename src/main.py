@@ -3,7 +3,9 @@ from typing import Union
 
 import nextcord
 
-config = json.load(open('config.json'))
+with open('config.json', encoding='UTF-8') as config_file:
+    config = json.load(config_file)
+
 guild_ids = config['guild_ids'] if 'guild_ids' in config else None
 
 client = nextcord.Client()
